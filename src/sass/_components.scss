@@ -1,11 +1,183 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+:root {
+  --main-transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 body {
-  background-color: rgb(124, 170, 189);
+  background-color: rgb(207, 224, 231);
+  font-family: 'Signika Negative', sans-serif;
+  color: rgb(28, 44, 51);
+  line-height: 1.2;
 }
 .container {
   width: 1240px;
   padding: 0 20px;
+  margin: 0 auto;
+}
+.search-section {
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100px;
+  background-color: rgb(59, 85, 97);
+}
+button {
+  display: block;
+  min-width: 200px;
+  padding: 10px 20px;
+  background-color: transparent;
+  border: 3px solid white;
+  border-radius: 5px;
+  font-size: 25px;
+  text-transform: uppercase;
+  color: white;
+  cursor: pointer;
+  transition: background-color var(--main-transition),
+    box-shadow var(--main-transition);
+  &:hover,
+  &:focus {
+    background-color: rgb(46, 65, 73);
+    box-shadow: 10px 20px 15px rgba(0, 0, 0, 0.15);
+  }
+  &.load-more {
+    margin: 50px auto;
+    background-color: rgb(84, 113, 126);
+    &:hover,
+    &:focus {
+      background-color: rgb(46, 65, 73);
+      box-shadow: 10px 20px 15px rgba(0, 0, 0, 0.15);
+    }
+  }
 }
 // .main-section {
+//   .slide-right {
+//     display: block;
+//     content: '';
+//     width: 200px;
+//     height: 200px;
+//     background-image: url(../images/bike.svg);
+//     background-size: contain;
+//     background-repeat: no-repeat;
+//     position: absolute;
+//     opacity: 0.3;
+//     top: 400px;
+//     left: 0;
+//     z-index: 1000;
+//     animation: slide-right 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 
+//     // animation: slide-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+//   }
 // }
+// @keyframes slide-right {
+//   from {
+//     margin-left: 200%;
+//     width: 300%;
+//   }
+
+//   to {
+//     margin-left: 0%;
+//     width: 100%;
+//   }
+// }
+
+.recepies-box {
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+img {
+  width: 500px;
+  display: block;
+}
+.recepie-card {
+  margin-top: 20px;
+  width: 500px;
+}
+.recepie-info {
+  border: 1px solid rgb(59, 85, 97);
+  padding: 20px;
+  background-color: rgb(232, 242, 247);
+}
+.full-res {
+  display: block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--main-transition),
+    box-shadow var(--main-transition);
+
+  color: rgb(65, 89, 99);
+  border: 3px solid rgb(84, 118, 133);
+  width: 200px;
+  font-size: 15px;
+  margin: 20px auto;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover,
+  &:focus {
+    background-color: rgb(84, 118, 133);
+    color: white;
+  }
+}
+.recepie-title {
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  padding-bottom: 7px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgb(59, 85, 97);
+}
+.recepie-description {
+  font-size: 15px;
+  color: rgb(49, 56, 59);
+  padding-bottom: 7px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgb(59, 85, 97);
+}
+
+.ingr-list {
+  list-style: circle;
+  padding-left: 20px;
+  margin-bottom: 15px;
+  text-transform: lowercase;
+  padding-bottom: 7px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgb(59, 85, 97);
+  .recepie-card & {
+    display: flex;
+    flex-wrap: wrap;
+    // padding-left: 10px;
+  }
+}
+.ingr-item:not(:last-child) {
+  .recepie-card & {
+    margin-bottom: 0;
+    margin-right: 25px;
+  }
+  margin-bottom: 3px;
+}
+.prepar-title {
+  font-size: 23px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.preparation-list {
+  list-style: decimal;
+  padding-left: 20px;
+}
+.preparation-item {
+  padding-left: 10px;
+}
+.preparation-item:not(:last-child) {
+  margin-bottom: 10px;
+}
