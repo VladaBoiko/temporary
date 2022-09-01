@@ -5,22 +5,17 @@ const newRecipe = new GetRecipe();
 export default async function renderImgCards() {
   refs.loadMoreBtn.disabled = false;
   const data = await newRecipe.getRecipes();
-  console.log(data);
+  // console.log(data);
   const recepies = data.content;
-  // const ings = data.content.ingredients;
   markupFirst(recepies);
-  // ingridients(recepies);
 }
+
 function markupFirst(recepies) {
   recepies
     .map(recipe => {
-      // const heading = document.createElement('li');
-      // heading.textContent = `${recipe.ingredients}`;
-      // console.log(heading);
-
       const a = `<div class="recepie-card">
         <img
-          src="https://cdn.pixabay.com/photo/2019/05/14/16/43/himilayan-blue-poppy-4202825_1280.jpg"
+          src="https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677_1280.jpg"
           alt="Hokkaido Flower"
         />
         <div class="recepie-info">
@@ -35,69 +30,29 @@ function markupFirst(recepies) {
           </p>
           <ul class="ingr-list${recipe.id}">
           </ul>
-          <a href="./pages/recept.html" class="full-res">Read more...</a>
+          <a href="../recept.html" class="full-res full-res${recipe.id}">Read more...</a>
         </div>
       </div>`;
       refs.recepiesBox.insertAdjacentHTML('beforeend', a);
-      console.log(recipe);
       const ings = recipe.ingredients;
       const recipeIdent = recipe.id;
       ingridients(ings, recipeIdent);
 
-      // saveLink();
-      // openFullRec();
+      const link = document.querySelector(`.full-res${recipe.id}`);
+      link.addEventListener('click', () => {
+        localStorage.setItem('id', JSON.stringify(`${recipe.id}`));
+      });
     })
     .join('');
 }
-// function saveLink() {
-// localStorage.setItem('link', JSON.stringify((href = './pages/recept.html')));
-// const savedSettings = localStorage.getItem('link');
-// const parsedSettings = JSON.parse(savedSettings);
-// console.log(parsedSettings);
-// const link = document.querySelector(`.full-res${id}`);
-// link.addEventListener('click', openFullRec);
-// }
-function openFullRec(evt) {
-  // evt.preventDefault();
-  console.log(evt.currentTarget);
-}
 function ingridients(ingredients, ident) {
-  console.log(ingredients);
+  // console.log(ingredients);
   const ingrList = document.querySelector(`.ingr-list${ident}`);
-  // recepies
-  //   .map(recipe => {
   for (i = 0; i < ingredients.length; i += 1) {
-    console.log(ingredients[i]);
+    // console.log(ingredients[i]);
     const b = document.createElement('li');
     b.textContent = `${ingredients[i]}`;
 
     ingrList.append(b);
-    //     }
-
-    //     // ingridients(recepies);
-    //   })
-    //   .join('');
   }
 }
-//  const res = data.content;
-
-// const ingrList = document.querySelector('.ingr-list');
-// ingrList.append(heading);
-// const markupSecond = recepies
-//   .map(recipe => {
-
-//   })
-//   .join('');
-//   notification(total, maxHits);
-
-//   if (newImgService.page === 1) {
-//     cardBox.innerHTML = markup;
-//   }
-//   if (newImgService.page !== 1) {
-
-// ingrList.insertAdjacentHTML('beforeend', markupSecond);
-//   }
-// }
-// const markupFirst =
-
-// export { ingridients };
