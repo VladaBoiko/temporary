@@ -43,10 +43,24 @@ function markupFirst(recepies) {
       const ings = recipe.ingredients;
       const recipeIdent = recipe.id;
       ingridients(ings, recipeIdent);
+
+      // saveLink();
+      // openFullRec();
     })
     .join('');
 }
-
+// function saveLink() {
+// localStorage.setItem('link', JSON.stringify((href = './pages/recept.html')));
+// const savedSettings = localStorage.getItem('link');
+// const parsedSettings = JSON.parse(savedSettings);
+// console.log(parsedSettings);
+// const link = document.querySelector(`.full-res${id}`);
+// link.addEventListener('click', openFullRec);
+// }
+function openFullRec(evt) {
+  // evt.preventDefault();
+  console.log(evt.currentTarget);
+}
 function ingridients(ingredients, ident) {
   console.log(ingredients);
   const ingrList = document.querySelector(`.ingr-list${ident}`);
