@@ -5,5 +5,9 @@ const refs = {
   fourthBtn: document.querySelector('.fourth'),
   recepiesBox: document.querySelector('.recepies-box'),
   loadMoreBtn: document.querySelector('.load-more'),
+  choiceBox: document.querySelector('.choice'),
 };
-export { refs };
+const secondRefs = {
+  recepiesBox: document.querySelector('.container.full'),
+};
+export { refs, secondRefs };

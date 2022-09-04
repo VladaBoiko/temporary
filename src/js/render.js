@@ -1,16 +1,23 @@
 import GetRecipe from './request';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { refs } from './refs';
 
 const newRecipe = new GetRecipe();
 export default async function renderImgCards() {
   refs.loadMoreBtn.disabled = false;
   const data = await newRecipe.getRecipes();
-  // console.log(data);
   const recepies = data.content;
   markupFirst(recepies);
+  Notify.success(`We found ${data.totalElements} recipes in this category.`);
 }
 
 function markupFirst(recepies) {
+  if (recepies.length < 2) {
+    refs.loadMoreBtn.disabled = true;
+    Notify.warning(
+      "We're sorry, but you've reached the end of search results."
+    );
+  }
   recepies
     .map(recipe => {
       const a = `<div class="recepie-card">
@@ -44,15 +51,26 @@ function markupFirst(recepies) {
       });
     })
     .join('');
+  refs.loadMoreBtn.textContent = 'Load more...';
 }
 function ingridients(ingredients, ident) {
-  // console.log(ingredients);
   const ingrList = document.querySelector(`.ingr-list${ident}`);
   for (i = 0; i < ingredients.length; i += 1) {
-    // console.log(ingredients[i]);
     const b = document.createElement('li');
     b.textContent = `${ingredients[i]}`;
 
     ingrList.append(b);
   }
 }
+async function onLoadMore() {
+  newRecipe.incrementPage();
+  const data = await newRecipe.getRecipes();
+  const recepies = data.content;
+  markupFirst(recepies);
+  // if (recepies.length < 2) {
+  //   Notify.warning(
+  //     "We're sorry, but you've reached the end of search results."
+  //   );
+  // }
+}
+export { onLoadMore };

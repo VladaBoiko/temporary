@@ -1,0 +1,89 @@
+<a href="" class="our-team-social-item__link">
+  <svg class="our-team-social-item__icons" width="20" height="20">
+    <use href="./images/icons.svg#icon-twitter"></use>
+  </svg>
+</a>
+
+<picture class="hero-ice-cream__img">
+  <source
+    srcset="
+      ./images/hero/ice-cream-desctop-fon-244-min.png 1x,
+      ./images/hero/ice-cream-desctop-fon-488-min.png 2x
+    "
+    type="image/png"
+    media="(min-width: 1000px)"
+  />
+  <source
+    srcset="
+      ./images/hero/ice-cream-tablet-fon-143-min.png 1x,
+      ./images/hero/ice-cream-tablet-fon-286-min.png 2x
+    "
+    type="image/png"
+    media="(min-width: 768px)"
+  />
+  <source
+    srcset="
+      ./images/hero/ice-cream-mobail-fon-171-min.png 1x,
+      ./images/hero/ice-cream-mobail-fon-342-min.png 2x
+    "
+    media="(min-width: 768px)"
+  />
+
+  <img
+    srcset="
+      ./images/hero/ice-cream-desctop-fon-244-min.png 1x,
+      ./images/hero/ice-cream-desctop-fon-488-min.png 2x
+    "
+    src="./images/hero/ice-cream-desctop-fon-244-min.png"
+    alt="milk"
+  />
+</picture>
+
+<link
+  rel="shortcut icon"
+  href="./images/how-its-made/cup/cup-three-44.png"
+  type="image/x-icon"
+/>
+
+<img
+  srcset="
+    ./images/hero/ice-cream-desctop-fon-244-min.png 1x,
+    ./images/hero/ice-cream-desctop-fon-488-min.png 2x
+  "
+  src="./images/hero/ice-cream-desctop-fon-244-min.png"
+  alt="milk"
+/>
+
+<!-- list -->
+counter-reset: my-counter;
+<!-- item -->
+content: counter(my-counter, decimal-leading-zero) ''; counter-increment:
+my-counter;
+<!-- mixins -->
+@mixin text($font-family: 'Montserrat', $a: 400, $b: 22px, $c: 35px) {
+font-family: $font-family; font-style: normal; font-weight: $a; font-size: $b;
+line-height: calc($c / $b); } @mixin font($fw, $fs, $lh) { font-weight: $fw;
+font-size: $fs; line-height: $lh; } @mixin flexCenter { display: flex;
+justify-content: center; align-items: center; } @mixin transition() {
+transition: transform 250ms var(--cubic), color 250ms var(--cubic),
+background-color 250ms var(--cubic); } @mixin mobile { @media screen and
+(min-width: 375px) { @content; } } @mixin tablet { @media screen and (min-width:
+768px) { @content; } } @mixin desktop-small { @media screen and (min-width:
+1000px) { @content; } } @mixin desktop { @media screen and (min-width: 1470px) {
+@content; } }
+<!-- styles -->
+@import '~node_modules/modern-normalize/modern-normalize.css'; html {
+scroll-behavior: smooth; } body { width: 100%; font-family: 'Montserrat'; }
+.none { display: none; } .hidden { overflow: hidden; } .is-open { opacity: 0; }
+a { text-decoration: none; } a:focus { outline: none; } ul { list-style-type:
+none; margin: 0; padding: 0; } h1, h2, h3, h4, h5, h6, p { margin: 0; padding:
+0; } img { display: block; width: 100%; height: auto; } svg { fill:
+currentColor; } input { padding: 0; margin: 0; } button { display: inline-block;
+padding: 0; margin: 0; border: none; cursor: pointer; } section { margin: 0
+auto; } .visually-hidden { position: absolute; width: 1px; height: 1px; margin:
+-1px; border: 0; padding: 0; clip: rect(0 0 0 0); overflow: hidden; } .container
+{ width: 100%; padding: 0 15px; margin: 0 auto; } @media screen and (min-width:
+499px) { .container { width: 499px; } } @media screen and (min-width: 768px) {
+.container { width: 768px; } } @media screen and (min-width: 1000px) {
+.container { width: 1000px; } } @media screen and (min-width: 1470px) {
+.container { width: 1470px; } }
