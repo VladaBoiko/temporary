@@ -8,6 +8,7 @@ export default class GetRecipe {
   constructor() {
     this.page = 1;
     this.id = parsedId;
+    // this.category = null;
   }
 
   async getRecipes() {
@@ -19,15 +20,15 @@ export default class GetRecipe {
       return data;
     } catch (error) {}
   }
-  // async getRecipesByCategory() {
-  //   const serverDataURL = `${BASIC_URL}${this.id}`;
-  //   try {
-  //     const server = await axios.get(serverDataURL);
-  //     const data = await server.data;
+  async getRecipesByCategory(category) {
+    const serverDataURL = `${BASIC_URL}page?page=${this.page}&size=2&category=${category}`;
+    try {
+      const server = await axios.get(serverDataURL);
+      const data = await server.data;
 
-  //     return data;
-  //   } catch (error) {}
-  // }
+      return data;
+    } catch (error) {}
+  }
   async getRecipesById() {
     const serverDataURL = `${BASIC_URL}${this.id}`;
     try {

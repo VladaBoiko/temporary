@@ -3,9 +3,10 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { refs } from './refs';
 
 const newRecipe = new GetRecipe();
-export default async function renderImgCards() {
+export default async function renderImgCards(category) {
+  newRecipe.resetPage();
   refs.loadMoreBtn.disabled = false;
-  const data = await newRecipe.getRecipes();
+  const data = await newRecipe.getRecipesByCategory(category);
   const recepies = data.content;
   markupFirst(recepies);
   Notify.success(`We found ${data.totalElements} recipes in this category.`);
@@ -20,7 +21,7 @@ function markupFirst(recepies) {
   }
   recepies
     .map(recipe => {
-      const a = `<div class="recepie-card">
+      const card = `<div class="recepie-card">
         <img
           src="https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677_1280.jpg"
           alt="Hokkaido Flower"
@@ -40,7 +41,13 @@ function markupFirst(recepies) {
           <a href="../recept.html" class="full-res full-res${recipe.id}">Read more...</a>
         </div>
       </div>`;
-      refs.recepiesBox.insertAdjacentHTML('beforeend', a);
+      // if (page === 0) {
+      //   refs.recepiesBox.innerHTML('afterbegin', card);
+      // }
+      // if (page !== 0) {
+      refs.recepiesBox.insertAdjacentHTML('beforeend', card);
+      // }
+
       const ings = recipe.ingredients;
       const recipeIdent = recipe.id;
       ingridients(ings, recipeIdent);
@@ -62,15 +69,10 @@ function ingridients(ingredients, ident) {
     ingrList.append(b);
   }
 }
-async function onLoadMore() {
+async function onLoadMore(category) {
   newRecipe.incrementPage();
-  const data = await newRecipe.getRecipes();
+  const data = await newRecipe.getRecipesByCategory(category);
   const recepies = data.content;
   markupFirst(recepies);
-  // if (recepies.length < 2) {
-  //   Notify.warning(
-  //     "We're sorry, but you've reached the end of search results."
-  //   );
-  // }
 }
 export { onLoadMore };
