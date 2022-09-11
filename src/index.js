@@ -35,8 +35,8 @@ function clearStart() {
 function btnDisable() {
   refs.secondBtn.disabled = false;
   refs.firstBtn.disabled = false;
-  refs.thirdBtn.disabled = false;
-  refs.fourthBtn.disabled = false;
+  // refs.thirdBtn.disabled = false;
+  // refs.fourthBtn.disabled = false;
 }
 
 function loadMore() {
